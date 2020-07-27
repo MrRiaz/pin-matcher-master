@@ -12,13 +12,13 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="pin-generator half-width">
-                    <input id="pinDisplay1" class="form-control" type="text">
+                    <input id="pinDisplay" class="form-control" type="text">
                     <button id="createPin" class="generate-btn">Generate Pin</button>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-section half-width">
-                    <input id="pinDisplay2" class="form-control" type="text">
+                    <input id="pinVerifyDisplay" class="form-control" type="text">
                     <div class="numbers">
                         <div class="calc-body">
                             <div class="calc-button-row">
@@ -58,35 +58,37 @@
 
     <script>
         document.getElementById('createPin').addEventListener('click', function(){
-            const pinOutput = document.getElementById('pinDisplay1');
+            const pinOutput = document.getElementById('pinDisplay');
             for(i = 0; i < 10000; i++){
-            var randomNum = Math.random() * 9999;
+            var randomNum = Math.random() * 10000;
             var output = Math.ceil(randomNum);
             }
-            document.getElementById('pinDisplay1').value = output;
+            document.getElementById('pinDisplay').value = output;
         })
 
         function number(num){
-            document.getElementById('pinDisplay2').value = document.getElementById('pinDisplay2').value + num;
+            document.getElementById('pinVerifyDisplay').value = document.getElementById('pinVerifyDisplay').value + num;
         }
 
         function clean(){
-            document.getElementById('pinDisplay2').value = '';
+            document.getElementById('pinVerifyDisplay').value = '';
         }
 
         function back(){
-            const exp = document.getElementById('pinDisplay2').value;
-            document.getElementById('pinDisplay2').value = exp.substring(0, exp.length-1);
+            const exp = document.getElementById('pinVerifyDisplay').value;
+            document.getElementById('pinVerifyDisplay').value = exp.substring(0, exp.length-1);
         }
 
         document.getElementById('submit').addEventListener('click', function(){
-            const firstPinDisplay = document.getElementById('pinDisplay1').value;
-            const secondPinDisplay = document.getElementById('pinDisplay2').value;
+            const firstPinDisplay = document.getElementById('pinDisplay').value;
+            const secondPinDisplay = document.getElementById('pinVerifyDisplay').value;
             if(firstPinDisplay == secondPinDisplay){
                 document.getElementById('notify-right').style.display = 'block';
+                document.getElementById('notify-wrong').style.display = 'none';
             }
             else{
                 document.getElementById('notify-wrong').style.display = 'block';
+                document.getElementById('notify-right').style.display = 'none';
             }
         })
     </script>
