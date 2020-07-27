@@ -59,10 +59,7 @@
     <script>
         document.getElementById('createPin').addEventListener('click', function(){
             const pinOutput = document.getElementById('pinDisplay');
-            for(i = 0; i < 10000; i++){
-            var randomNum = Math.random() * 10000;
-            var output = Math.ceil(randomNum);
-            }
+            var output = Math.floor(1000 + Math.random() * 9000);
             document.getElementById('pinDisplay').value = output;
         })
 
